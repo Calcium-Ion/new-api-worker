@@ -31,7 +31,7 @@
 
 1. 点击 **部署** 按钮，保存并部署您的 Worker。
 
-### 7. 测试您的 Worker
+### 6. 测试您的 Worker
 
 您可以通过发送 POST 请求到您的 Worker URL（例如：`https://your-subdomain.workers.dev`）来测试它。确保请求中包含正确的密钥和URL。
 
