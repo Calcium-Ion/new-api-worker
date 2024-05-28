@@ -1,5 +1,6 @@
-const allowedIps = ['127.0.0.1']; // 替换为您允许的 IP 地址
-const validKey = 'your_secret_key'; // 替换为您允许的密钥
+// 验证设置，建议使用CloudFlare的防火墙功能
+const allowedIps = ['127.0.0.1']; // 替换为您允许的 IP 地址，建议使用CloudFlare的防火墙功能
+const validKey = 'your_secret_key'; // 替换为您允许的密钥，建议使用CloudFlare的防火墙功能
 
 const enableIps = false;
 const enableKey = true;
