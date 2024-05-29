@@ -3,6 +3,7 @@
 ## 前提条件
 
 - 一个已注册的 Cloudflare 账户
+- 一个绑定到该账户的域名（域名地址可能会被公开，所以最好用`干净`的域名）
 
 ## 步骤
 
@@ -31,14 +32,25 @@
 
 1. 点击 **部署** 按钮，保存并部署您的 Worker。
 
-### 6. 测试您的 Worker
+### 6.绑定域名
 
-您可以通过发送 POST 请求到您的 Worker URL（例如：`https://your-subdomain.workers.dev`）来测试它。确保请求中包含正确的密钥和URL。
+1. 点击 **设置** 按钮，选择 **触发器** 栏目，点击**添加自定义域**
+2. 输入你要绑定的域名，例如new-api-worker.yourdomain.com
+3. 等待域名生效，并测试
+
+### 7.删除访问者 IP 标头
+
+1. 进入你绑定到该worker的域名，点击 **规则** ， **转换规则** ，打开 **删除访问者 IP 标头** 选择，如下图
+<img width="1162" alt="image" src="https://github.com/Calcium-Ion/new-api-worker/assets/61247483/7adbf5e4-1190-4556-b971-9856b39a342e">
+
+### 8. 测试您的 Worker
+
+您可以通过发送 POST 请求到您的 Worker URL（例如：`https://new-api-worker.yourdomain.com`）来测试它。确保请求中包含正确的密钥和URL。
 
 ### 示例请求
 
 ```bash
-curl -X POST https://your-subdomain.workers.dev \
+curl -X POST https://new-api-worker.yourdomain.com \
 -H "Content-Type: application/json" \
 -d '{"key":"your_secret_key", "url":"https://example.com"}'
 ```
