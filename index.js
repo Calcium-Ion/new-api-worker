@@ -27,7 +27,7 @@ async function handleRequest(request) {
         }), {status: 400});
     }
 
-    const { key, url: originUrl } = requestData;
+    const { key, url: originUrl, method = 'GET', headers = {}, body } = requestData;
 
     if (enableKey) {
         if (validKey === 'your_secret_key') {
@@ -63,8 +63,19 @@ async function handleRequest(request) {
     }
 
     try {
+        // 构建请求选项
+        const fetchOptions = {
+            method: method,
+            headers: headers
+        };
+
+        // 如果有body且不是GET请求，添加body
+        if (body && method !== 'GET') {
+            fetchOptions.body = typeof body === 'string' ? body : JSON.stringify(body);
+        }
+
         // 发起请求
-        const response = await fetch(originUrl);
+        const response = await fetch(originUrl, fetchOptions);
 
         if (!response.ok) {
             return new Response(JSON.stringify({
